@@ -540,7 +540,9 @@ public:
 
 转化为数学公式：
 $$
+\begin{align*}
 f(n)=f(n-1)+f(n-2)+f(n-3)+...+f(2)+f(1)+1
+\end{align*}
 $$
 
 
