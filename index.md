@@ -1,3 +1,11 @@
+
+
+[TOC]
+
+
+
+## 一、二维数组中的查找
+
 >## 题目描述
 >
 >在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
@@ -120,45 +128,7 @@ public:
 
 
 
-***
-
-
-
-```c++
-// 递归版本
-void pre(node* root, vector<int>& val)
-{
-    if(root == nullptr)
-        return;
-    val.push_back(root->val);
-    pre(root->left, val);
-    pre(root->right, val);
-}
-
-// 迭代版本
-vector<int> pre(node* root)
-{
-    vector<int> val;
-    stack<node*> stk;
-    
-    stk.push(root);
-    while(root)
-    {
-        val.push_back(root->val);
-        if(root->left)
-        {
-            root = root->left;
-            stk.push(root);
-        } else if(root->right)
-        {
-            root = root->right;
-        	stk.push(root);
-        }
-        else
-            root = stk.pop();
-    }
-}
-```
+## 二、重建二叉树
 
 >## 题目描述
 >
@@ -366,6 +336,8 @@ public:
 
 
 
+## 三、两个栈实现队列
+
 >## 题目描述
 >
 >用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
@@ -400,6 +372,10 @@ private:
     stack<int> stack2;
 };
 ```
+
+
+
+## 四、旋转数组的最小数字
 
 >## 题目描述
 >
@@ -457,6 +433,8 @@ public:
 };
 ```
 
+## 五、斐波那契数列
+
 >## 题目描述
 >
 >大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。
@@ -505,6 +483,8 @@ public:
 
 
 
+## 六、跳台阶:blue_heart:
+
 >## 题目描述(斐波那契数列方法)
 >
 >一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。
@@ -533,6 +513,8 @@ public:
     }
 };
 ```
+
+## 七、变态跳台阶 :blue_heart:
 
 >## 题目描述
 >
@@ -610,6 +592,8 @@ public:
 
 
 
+## 八、矩形覆盖
+
 >## 题目描述(菲拉波切数列)
 >
 >我们可以用2*1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2*1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？
@@ -638,6 +622,8 @@ public:
 
 
 
+## 九、二进制中1的个数
+
 > ## 题目描述
 >
 > 输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
@@ -663,6 +649,8 @@ public:
      }
 };
 ```
+
+## 十、数值的数字次方
 
 >## 题目描述
 >
@@ -696,7 +684,7 @@ public:
 
 
 
-
+## 十一、链表的倒数第k个结点
 
 >## 题目描述
 >
@@ -766,6 +754,8 @@ public:
 
 
 
+## 十二、合并两个排序的链表
+
 >## 题目描述
 >
 >输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。
@@ -810,6 +800,8 @@ public:
     }
 };
 ```
+
+## 十三、树的子结构
 
 >## 题目描述
 >
@@ -1104,6 +1096,8 @@ public:
 };
 ```
 
+## 十四、二叉树的镜像
+
 >## 题目描述
 >
 >操作给定的二叉树，将其变换为源二叉树的镜像。
@@ -1124,10 +1118,12 @@ public:
 >    	 / \  / \
 >    	11 9 7  5
 >```
->
->- 
+
+
+
 
 ```c++
+
 /*
 struct TreeNode {
 	int val;
@@ -1151,7 +1147,9 @@ public:
 };
 ```
 
-***
+
+
+## 十五、顺时针打印矩阵 :blue_heart:
 
 >## 题目描述
 >
@@ -1391,6 +1389,170 @@ public:
 ```
 
 
+
+## 十六、栈的压入，弹出序列:blue_heart:
+
+>## 题目描述 
+>
+>输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如序列1,2,3,4,5是某栈的压入顺序，序列4,5,3,2,1是该压栈序列对应的一个弹出序列，但4,3,5,1,2就不可能是该压栈序列的弹出序列。（注意：这两个序列的长度是相等的）
+
+#### >>思路
+
+利用一个辅助栈，按压栈顺序逐个压入，同时检查是否等于出栈序列值，是则弹出，最后，看栈是否为空。
+
+```c++
+// 运行时间：4ms
+// 占用内存：484k
+class Solution {
+public:
+    bool IsPopOrder(vector<int> pushV,vector<int> popV) {
+        vector<int> stack;
+        
+        for(int i = 0, j = 0; i < pushV.size();)
+        {
+            stack.push_back(pushV[i++]);
+            while(j < popV.size() && stack.back() == popV[j])
+            {
+                stack.pop_back();
+                ++j;
+            }
+        }
+        return stack.empty();
+    }
+};
+```
+
+
+
+## 十七、从上往下打印二叉树
+
+>## 题目描述
+>
+>从上往下打印出二叉树的每个节点，同层节点从左至右打印。
+
+```c++
+// 运行时间：3ms
+// 占用内存：476k
+
+/*
+struct TreeNode {
+	int val;
+	struct TreeNode *left;
+	struct TreeNode *right;
+	TreeNode(int x) :
+			val(x), left(NULL), right(NULL) {
+	}
+};*/
+class Solution {
+public:
+    vector<int> PrintFromTopToBottom(TreeNode* root) {
+        vector<int> vals;
+        queue<TreeNode*> que;
+        
+        if(root == nullptr)
+            return vals;
+        que.push(root);
+        while(!que.empty())
+        {
+            root = que.front();
+            que.pop();
+            vals.push_back(root->val);
+            if(root->left)
+                que.push(root->left);
+            if(root->right)
+                que.push(root->right);
+        }
+        return vals;
+    }
+};
+```
+
+
+
+## 十八、二叉树后序遍历序列:blue_heart:
+
+>## 题目描述
+>
+>输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。假设输入的数组的任意两个数字都互不相同。
+
+#### >>思路
+
+以最后一个数，即根为依据，把二叉树的左右子树部分分开，左子树一定小于根，右子树一定大于根，递归左右子树，有不符合的返回`false`。
+
+```c++
+// 运行时间：3ms
+// 占用内存：376k
+
+class Solution {
+public:
+    bool VerifySquenceOfBST(vector<int> sequence) {
+        if(sequence.empty())
+            return false;
+        stack<int> stk;
+        int begin = 0, last = sequence.size()-1;
+        while(1) {
+            int b = begin;
+            for(; b < last && sequence[b] < sequence[last]; ++b);
+            int mid = b;
+            for(b = b+1; b < last; ++b) 
+            {
+                if(sequence[b] < sequence[last])
+                    return false;
+            }
+        
+            if(mid-2 > begin) {
+                stk.push(mid); // 右子树开始位置
+                stk.push(last); // 右子树结束位置
+                last = mid-1;
+            }
+            else if(last-2 > mid) {
+                begin = mid;
+                last -= 1; // 最后一个位置记得更新，不然会死循环
+            }
+            else {
+                if(stk.empty()) return true;
+                last = stk.top();
+                stk.pop();
+                begin = stk.top();
+                stk.pop();
+            }
+        }
+    }
+};
+```
+
+```c++
+// 别人的迭代版本
+链接：https://www.nowcoder.com/questionTerminal/a861533d45854474ac791d90e447bafd
+来源：牛客网
+
+//非递归 
+//非递归也是一个基于递归的思想：
+//左子树一定比右子树小，因此去掉根后，数字分为left，right两部分，right部分的
+//最后一个数字是右子树的根他也比左子树所有值大，因此我们可以每次只看有子树是否符合条件
+//即可，即使到达了左子树左子树也可以看出由左右子树组成的树还想右子树那样处理
+ 
+//对于左子树回到了原问题，对于右子树，左子树的所有值都比右子树的根小可以暂时把他看出右子树的左子树
+//只需看看右子树的右子树是否符合要求即可
+class Solution {
+public:
+    bool VerifySquenceOfBST(vector<int> sequence) {
+        int size = sequence.size();
+        if(0==size)return false;
+ 
+        int i = 0;
+        while(--size)
+        {
+            while(sequence[i++]<sequence[size]);
+            while(sequence[i++]>sequence[size]);
+ 
+            if(i<size)return false;
+            i=0;
+        }
+        return true;
+    }
+};
+```
 
 
 
