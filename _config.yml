@@ -27,7 +27,7 @@ twitter_username: ""
 github_username:  daliny
 
 # Build settings
-#markdown: kramdown
+markdown: kramdown
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
