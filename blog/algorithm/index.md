@@ -1,7 +1,6 @@
-<<<<<<< Updated upstream
+
 * TOC
 =======
->>>>>>> Stashed changes
 {:toc}
 
 ## 一、二维数组中的查找
