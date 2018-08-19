@@ -1,5 +1,5 @@
-# [算法](/blog/algorithm)
+[算法](/blog/algorithm)
 
-# [C++](/blog/cpp)
+[C++](/blog/cpp)
 
-# [Linux](/blog/linux)
+[Linux](/blog/linux)
