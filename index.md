@@ -1,5 +1,3 @@
-# 目录
-
 # [算法](/blog/algorithm)
 
 # [C++](/blog/cpp)
